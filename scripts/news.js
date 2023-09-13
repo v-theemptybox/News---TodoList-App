@@ -10,7 +10,11 @@ let totalResults = 0;
 async function fetchData() {
   try {
     const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=${country}&category=${currentUser.category}&pagesize=${currentUser.pageSize}&page=${page}&apiKey=620e0ff2fb314212a3772524cda20813`
+      `https://newsapi.org/v2/top-headlines?country=${country}&category=${
+        currentUser.category || "general"
+      }&pageSize=${
+        currentUser.pageSize || 5
+      }&page=${page}&apiKey=620e0ff2fb314212a3772524cda20813`
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");
